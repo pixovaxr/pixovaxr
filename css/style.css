@@ -537,4 +537,16 @@ footer {
   .section-padding {
     padding: 2rem 0;
   }
+  .display-3 {
+    margin-top: 24px;
+    font-size: 1.4rem !important;
+    line-height: 1.2;
+  }
+  
+  .lead {
+    font-size: 1rem;
+  }
+  .hero-section img {
+    max-height: 100vh !important;
+  }
 }
