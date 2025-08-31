@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VR Showroom - PixovaXR</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+
+  <!-- Project Hero Section -->
+  <section class="bg-dark py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h1 class="display-4 fw-bold section-title">VR Showroom</h1>
+          <p class="lead mb-4">Next-generation virtual showroom experiences for products and spaces</p>
+        </div>
+        <div class="col-lg-6">
+          <img src="images/projects/vr-showroom.png" class="img-fluid rounded shadow" alt="VR Showroom">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Overview -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="section-title text-center mb-5">Project Overview</h2>
+          <p class="lead text-center mb-5">Our VR Showroom solution transforms how businesses showcase their products and spaces, offering immersive virtual experiences that engage customers like never before.</p>
+          <div class="ratio ratio-16x9 mb-5">
+            <iframe src="https://www.youtube.com/embed/jSm1MO30tpI?si=L_b76w0F4J4RB0Ag" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card h-100 bg-light">
+                <div class="card-body">
+                  <h5 class="card-title text-danger">
+                    <i class="fas fa-cube me-2"></i>
+                    3D Product Visualization
+                  </h5>
+                  <p class="card-text text-dark">Interactive 3D models with customizable features and detailed views.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100 bg-light">
+                <div class="card-body">
+                  <h5 class="card-title text-danger">
+                    <i class="fas fa-vr-cardboard me-2"></i>
+                    Virtual Tours
+                  </h5>
+                  <p class="card-text text-dark">Immersive walkthroughs of showrooms and spaces.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100 bg-light">
+                <div class="card-body">
+                  <h5 class="card-title text-danger">
+                    <i class="fas fa-paint-brush me-2"></i>
+                    Customization Options
+                  </h5>
+                  <p class="card-text text-dark">Real-time product configuration and visualization.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100 bg-light">
+                <div class="card-body">
+                  <h5 class="card-title text-danger">
+                    <i class="fas fa-users me-2"></i>
+                    Multi-User Experience
+                  </h5>
+                  <p class="card-text text-dark">Collaborative virtual showroom visits with sales staff.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 相關項目輪播 -->
+  <section class="section-padding bg-dark">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Related Projects</h2>
+      <div id="projects-carousel-placeholder"></div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // 定義自定義項目數據 - 使用默認圖片代替
+    
+    window.customProjectsData = [
+    { image: 'images/projects/bim-supervision-ar.png', title: 'BIM Supervision AR System', link: 'bim-supervision-ar.html' },
+    { image: 'images/projects/environmental-education-vr360.png', title: 'Environmental Education VR360 Videos', link: 'environmental-education-vr360.html' },
+    { image: 'images/projects/educational-vr-games.png', title: 'Educational VR Games', link: 'educational-vr-games.html' },
+    { image: 'images/projects/entertainment-vr-games.png', title: 'Entertainment VR games', link: 'entertainment-vr-games.html' },
+    { image: 'images/projects/vr-showroom.png', title: 'VR Showroom', link: 'vr-showroom.html' },
+    { image: 'images/projects/ar-tour-guide.png', title: 'AR Tour Guide', link: 'ar-tour-guide.html' },
+    { image: 'images/projects/online-exhibition.JPG', title: 'Online Exhibition', link: 'online-exhibition.html' },
+    { image: 'images/projects/data-visualization-war-situation.png', title: 'Data visualization war situation management system', link: 'data-visualization-war-situation.html' },
+    { image: 'images/projects/vr-architecture-competition.png', title: 'VR Architecture Competition', link: 'vr-architecture-competition.html' }
+    ];
+  
+    $(function(){
+      // 加載 header 和 footer
+      $("#header-placeholder").load("components/header.html");
+      $("#footer-placeholder").load("components/footer.html");
+      
+      // 加載輪播組件
+      $("#projects-carousel-placeholder").load("components/carousel-component.html", function() {
+        // 使用自定義數據初始化輪播
+        if (typeof initProjectsCarousel === 'function') {
+          initProjectsCarousel(window.customProjectsData, {
+            slidesToShow: {
+              desktop: 3,
+              tablet: 3,
+              mobile: 1
+            },
+            autoplay: true,
+            autoplaySpeed: 4500,
+            infinite: true
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!-- Projects Carousel Component -->
+<div class="projects-carousel-container py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 position-relative">
+        <!-- 桌面版輪播 -->
+        <div id="projectsCarouselDesktop" class="carousel slide d-none d-lg-block" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- 輪播項目將由 JavaScript 動態生成 -->
+          </div>
+          
+          <!-- 控制按鈕 -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarouselDesktop" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#projectsCarouselDesktop" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- 平板版輪播 -->
+        <div id="projectsCarouselTablet" class="carousel slide d-none d-md-block d-lg-none" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- 輪播項目將由 JavaScript 動態生成 -->
+          </div>
+          
+          <!-- 控制按鈕 -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarouselTablet" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#projectsCarouselTablet" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- 手機版輪播 -->
+        <div id="projectsCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- 輪播項目將由 JavaScript 動態生成 -->
+          </div>
+          
+          <!-- 控制按鈕 -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarouselMobile" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#projectsCarouselMobile" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 輪播組件的樣式 -->
+<style>
+  /* 輪播滑動時間縮短，減少重疊 */
+  .projects-carousel-container .carousel-item {
+    transition: transform 0.5s ease-in-out;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+  
+  .projects-carousel-container .carousel-inner {
+    padding: 0.5rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* 控制按鈕樣式 */
+  .projects-carousel-container .carousel-control-prev,
+  .projects-carousel-container .carousel-control-next {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+  }
+  
+  .projects-carousel-container .carousel-control-prev:hover,
+  .projects-carousel-container .carousel-control-next:hover {
+    background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+    transform: translateY(-50%) scale(1.1);
+    border-color: rgba(255,255,255,0.4);
+  }
+  
+  .projects-carousel-container .carousel-control-prev {
+    left: -1rem;
+  }
+  
+  .projects-carousel-container .carousel-control-next {
+    right: -1rem;
+  }
+  
+  .projects-carousel-container .carousel-control-prev-icon,
+  .projects-carousel-container .carousel-control-next-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  /* 卡片樣式優化 */
+  .projects-carousel-container .project-card {
+    margin: 0 0.3rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: white;
+    transform: translateZ(0);
+    opacity: 1;
+  }
+  
+  .projects-carousel-container .project-card:hover {
+    transform: translateY(-8px) translateZ(0);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  }
+  
+  .projects-carousel-container .project-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .projects-carousel-container .project-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  .projects-carousel-container .project-title {
+    font-size: 0.9rem;
+    margin: 0.8rem 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.8rem;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .projects-carousel-container .project-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  
+  /* 新卡片進入動畫 */
+  .projects-carousel-container .project-card.animate-in {
+    animation: smoothFadeInUp 0.6s ease-out forwards;
+  }
+  
+  /* 舊卡片快速消失動畫 */
+  .projects-carousel-container .project-card.animate-out {
+    animation: quickFadeOut 0.3s ease-in forwards;
+  }
+  
+  .projects-carousel-container .project-card.preparing {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  /* 即將進入的卡片初始狀態 */
+  .projects-carousel-container .carousel-item-next .project-card,
+  .projects-carousel-container .carousel-item-prev .project-card {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  @keyframes smoothFadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes quickFadeOut {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* 響應式調整 */
+  @media (max-width: 991px) {
+    .projects-carousel-container .carousel-control-prev {
+      left: -0.5rem;
+    }
+    
+    .projects-carousel-container .carousel-control-next {
+      right: -0.5rem;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .projects-carousel-container .carousel-control-prev,
+    .projects-carousel-container .carousel-control-next {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    
+    .projects-carousel-container .carousel-control-prev {
+      left: -0.3rem;
+    }
+    
+    .projects-carousel-container .carousel-control-next {
+      right: -0.3rem;
+    }
+    
+    .projects-carousel-container .project-card {
+      margin: 0 0.2rem;
+    }
+  }
+  
+  /* 確保GPU加速 */
+  .projects-carousel-container .carousel,
+  .projects-carousel-container .carousel-inner,
+  .projects-carousel-container .carousel-item {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+</style>
+
+<!-- 輪播組件的 JavaScript -->
+<script>
+  // 使用預設圖片作為備用
+  const defaultProjectsData = [
+    { image: 'images/projects/bim-supervision-ar.png', title: 'BIM Supervision AR System', link: 'bim-supervision-ar.html' },
+    { image: 'images/projects/environmental-education-vr360.png', title: 'Environmental Education VR360 Videos', link: 'environmental-education-vr360.html' },
+    { image: 'images/projects/educational-vr-games.png', title: 'Educational VR Games', link: 'educational-vr-games.html' },
+    { image: 'images/projects/entertainment-vr-games.png', title: 'Entertainment VR games', link: 'entertainment-vr-games.html' },
+    { image: 'images/projects/vr-showroom.png', title: 'VR Showroom', link: 'vr-showroom.html' },
+    { image: 'images/projects/ar-tour-guide.png', title: 'AR Tour Guide', link: 'ar-tour-guide.html' },
+    { image: 'images/projects/online-exhibition.JPG', title: 'Online Exhibition', link: 'online-exhibition.html' },
+    { image: 'images/projects/data-visualization-war-situation.png', title: 'Data visualization war situation management system', link: 'data-visualization-war-situation.html' },
+    { image: 'images/projects/vr-architecture-competition.png', title: 'VR Architecture Competition', link: 'vr-architecture-competition.html' }
+  ];
+
+  // 預載入圖片的函數
+  function preloadImages(projectsData) {
+    projectsData.forEach(project => {
+      const img = new Image();
+      img.src = project.image;
+    });
+  }
+
+  // 舊卡片快速消失動畫
+  function animateCardsOut(cards) {
+    cards.forEach((card, index) => {
+      // 立即開始消失動畫，每張卡片間隔很短
+      setTimeout(() => {
+        card.classList.add('animate-out');
+      }, index * 30); // 很短的間隔，快速消失
+    });
+  }
+
+  // 新卡片進入動畫 - 在舊卡片開始消失後適時開始
+  function animateCardsIn(cards, startDelay = 200, cardDelay = 100) {
+    cards.forEach((card, index) => {
+      // 清除之前的狀態
+      card.classList.remove('animate-in', 'animate-out', 'preparing');
+      
+      // 設置初始狀態
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      
+      // 在適當時機開始進入動畫
+      setTimeout(() => {
+        card.classList.add('animate-in');
+      }, startDelay + (index * cardDelay));
+    });
+  }
+
+  // 創建無接縫輪播項目的函數
+  function createSeamlessCarouselItems(projectsData, slidesToShow) {
+    const items = [];
+    const totalProjects = projectsData.length;
+    
+    // 如果項目數量少於一頁顯示的數量，重複項目直到足夠
+    let extendedProjects = [...projectsData];
+    while (extendedProjects.length < slidesToShow) {
+      extendedProjects = [...extendedProjects, ...projectsData];
+    }
+    
+    // 計算需要多少個輪播項目
+    const totalSlides = Math.ceil(totalProjects / slidesToShow);
+    
+    for (let slideIndex = 0; slideIndex < totalSlides; slideIndex++) {
+      const carouselItem = document.createElement('div');
+      carouselItem.className = 'carousel-item';
+      if (slideIndex === 0) carouselItem.classList.add('active');
+      
+      const row = document.createElement('div');
+      row.className = 'row g-2 h-100 align-items-stretch';
+      
+      // 計算每個項目的列寬
+      let colClass;
+      if (slidesToShow === 4) {
+        colClass = 'col-3';
+      } else if (slidesToShow === 3) {
+        colClass = 'col-4';
+      } else if (slidesToShow === 2) {
+        colClass = 'col-6';
+      } else {
+        colClass = 'col-12';
+      }
+      
+      // 為這個輪播項目創建卡片
+      for (let cardIndex = 0; cardIndex < slidesToShow; cardIndex++) {
+        // 計算實際的項目索引，實現無接縫效果
+        const projectIndex = (slideIndex * slidesToShow + cardIndex) % totalProjects;
+        const project = projectsData[projectIndex];
+        
+        const col = document.createElement('div');
+        col.className = `${colClass} d-flex`;
+        
+        col.innerHTML = `
+          <div class="project-card w-100">
+            <a href="${project.link}">
+              <img src="${project.image}" alt="${project.title}" class="img-fluid" loading="lazy">
+              <div class="project-title">${project.title}</div>
+            </a>
+          </div>
+        `;
+        
+        row.appendChild(col);
+      }
+      
+      carouselItem.appendChild(row);
+      items.push(carouselItem);
+    }
+    
+    return items;
+  }
+
+  // 初始化單個輪播的函數
+  function initSingleCarousel(carouselId, projectsData, slidesToShow, config) {
+    const carouselElement = document.getElementById(carouselId);
+    const carouselInner = carouselElement?.querySelector('.carousel-inner');
+    
+    if (!carouselInner) return;
+    
+    // 清空輪播內容
+    carouselInner.innerHTML = '';
+    
+    // 創建無接縫輪播項目
+    const carouselItems = createSeamlessCarouselItems(projectsData, slidesToShow);
+    
+    // 添加輪播項目到容器
+    carouselItems.forEach(item => {
+      carouselInner.appendChild(item);
+    });
+    
+    // 銷毀現有的 Bootstrap 輪播實例（如果存在）
+    const existingCarousel = bootstrap.Carousel.getInstance(carouselElement);
+    if (existingCarousel) {
+      existingCarousel.dispose();
+    }
+    
+    // 初始化新的 Bootstrap 輪播
+    try {
+      const carousel = new bootstrap.Carousel(carouselElement, {
+        interval: config.autoplay ? config.autoplaySpeed : false,
+        wrap: config.infinite,
+        touch: true,
+        pause: 'hover'
+      });
+
+      // 為初始顯示的卡片添加動畫
+      setTimeout(() => {
+        const activeItem = carouselElement.querySelector('.carousel-item.active');
+        if (activeItem) {
+          const cards = activeItem.querySelectorAll('.project-card');
+          animateCardsIn(cards, 200, 120);
+        }
+      }, 100);
+
+      // 輪播開始切換時的協調動畫
+      carouselElement.addEventListener('slide.bs.carousel', function (e) {
+        // 1. 立即讓舊卡片開始快速消失
+        const currentItem = carouselElement.querySelector('.carousel-item.active');
+        if (currentItem) {
+          const oldCards = currentItem.querySelectorAll('.project-card');
+          animateCardsOut(oldCards);
+        }
+        
+        // 2. 設置新卡片的進入動畫（稍微延遲，避免重疊）
+        const nextItem = e.relatedTarget;
+        const newCards = nextItem.querySelectorAll('.project-card');
+        animateCardsIn(newCards, 150, 90); // 更短的延遲和間隔
+      });
+
+    } catch (error) {
+      console.error(`Error initializing carousel ${carouselId}:`, error);
+    }
+  }
+
+  // 初始化所有輪播的函數
+  function initProjectsCarousel(customData, config) {
+    const projectsData = customData || defaultProjectsData;
+    
+    // 預載入圖片
+    preloadImages(projectsData);
+    
+    const defaultConfig = {
+      autoplay: true,
+      autoplaySpeed: 4000,
+      infinite: true
+    };
+    
+    const carouselConfig = { ...defaultConfig, ...(config || {}) };
+    
+    // 使用 requestAnimationFrame 確保DOM更新完成
+    requestAnimationFrame(() => {
+      initSingleCarousel('projectsCarouselDesktop', projectsData, 4, carouselConfig);
+      initSingleCarousel('projectsCarouselTablet', projectsData, 3, carouselConfig);
+      initSingleCarousel('projectsCarouselMobile', projectsData, 1, carouselConfig);
+    });
+  }
+  
+  // 頁面加載完成後初始化輪播
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof window.customProjectsData === 'undefined') {
+      initProjectsCarousel();
+    }
+  });
+
+  // 暴露全局函數供外部調用
+  window.initProjectsCarousel = initProjectsCarousel;
+</script>

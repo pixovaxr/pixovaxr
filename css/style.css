@@ -1,0 +1,540 @@
+/* PixovaXR Website Custom CSS */
+
+:root {
+  /* 基本顏色變量 */
+  --white: #ffffff;
+  --red: #c11313;        /* (193,19,19) */
+  --dark-red: #810909;   /* (129,9,9) */
+  --gray: #514e4e;       /* (81,78,78) */
+  --black: #000000;
+  
+  /* 透明度變體 */
+  --red-10: rgba(193, 19, 19, 0.1);
+  --red-20: rgba(193, 19, 19, 0.2);
+  --red-50: rgba(193, 19, 19, 0.5);
+  --red-80: rgba(193, 19, 19, 0.8);
+  
+  --dark-red-10: rgba(129, 9, 9, 0.1);
+  --dark-red-20: rgba(129, 9, 9, 0.2);
+  --dark-red-50: rgba(129, 9, 9, 0.5);
+  --dark-red-80: rgba(129, 9, 9, 0.8);
+  
+  --gray-10: rgba(81, 78, 78, 0.1);
+  --gray-20: rgba(81, 78, 78, 0.2);
+  --gray-50: rgba(81, 78, 78, 0.5);
+  --gray-80: rgba(81, 78, 78, 0.8);
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ====== 顏色通用類別 ====== */
+
+/* 背景顏色 */
+.bg-red { background-color: var(--red) !important; }
+.bg-dark-red { background-color: var(--dark-red) !important; }
+.bg-gray { background-color: var(--gray) !important; }
+
+/* 透明背景顏色 */
+.bg-red-10 { background-color: var(--red-10) !important; }
+.bg-red-20 { background-color: var(--red-20) !important; }
+.bg-red-50 { background-color: var(--red-50) !important; }
+.bg-red-80 { background-color: var(--red-80) !important; }
+
+.bg-dark-red-10 { background-color: var(--dark-red-10) !important; }
+.bg-dark-red-20 { background-color: var(--dark-red-20) !important; }
+.bg-dark-red-50 { background-color: var(--dark-red-50) !important; }
+.bg-dark-red-80 { background-color: var(--dark-red-80) !important; }
+
+.bg-gray-10 { background-color: var(--gray-10) !important; }
+.bg-gray-20 { background-color: var(--gray-20) !important; }
+.bg-gray-80 { background-color: var(--gray-80) !important; }
+
+/* 文字顏色 */
+.text-red { color: var(--red) !important; }
+.text-dark-red { color: var(--dark-red) !important; }
+.text-gray { color: var(--gray) !important; }
+
+/* 邊框顏色 */
+.border-red { border-color: var(--red) !important; }
+.border-dark-red { border-color: var(--dark-red) !important; }
+.border-gray { border-color: var(--gray) !important; }
+
+/* Navbar Styling */
+.navbar {
+  background-color: var(--black) !important;
+  border-bottom: 1px solid var(--gray);
+}
+
+.navbar-brand {
+  color: var(--white) !important;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: var(--white) !important;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--red) !important;
+}
+
+/* Split Button 下拉選單樣式 - 移除分隔線 */
+.navbar .btn-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navbar .btn-group .nav-link:first-child {
+  border-right: none;
+  border-radius: 0;
+  padding-right: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.navbar .btn-group .dropdown-toggle {
+  border-radius: 0;
+  padding-left: 0.25rem;
+  padding-right: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.navbar .btn-group .dropdown-toggle::after {
+  margin-left: 0.25rem;
+  transition: transform 0.3s ease;
+}
+
+/* 點擊展開時箭頭旋轉效果 */
+.navbar .btn-group .dropdown-toggle[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+/* === 桌面版樣式 === */
+@media (min-width: 992px) {
+  /* 修正桌面版 Hover 效果 - 防止背景框位移 */
+  .navbar .btn-group {
+    /* 確保按鈕組有固定的邊界 */
+    border-radius: 0;
+    overflow: visible; /* 讓下拉選單可以顯示 */
+  }
+  
+  .navbar .btn-group:hover .nav-link,
+  .navbar .btn-group:hover .dropdown-toggle {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--red) !important;
+    /* 防止位移 */
+    transform: none;
+    margin: 0;
+    border: none;
+  }
+  
+  /* 修正 active 狀態 */
+  .navbar .btn-group .nav-link.active,
+  .navbar .btn-group .dropdown-toggle[aria-expanded="true"] {
+    background-color: var(--red-20);
+    color: var(--red) !important;
+    transform: none;
+    margin: 0;
+    border: none;
+  }
+  
+  /* 桌面版下拉選單定位 */
+  .navbar .dropdown {
+    position: relative;
+  }
+  
+  /* 確保桌面版下拉選單正常顯示 */
+  .navbar .dropdown-menu {
+    background-color: var(--black) !important;
+    border: 1px solid var(--gray) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 0.375rem !important;
+    
+    /* 重要：確保下拉選單可以正常顯示和隱藏 */
+    display: none; /* 預設隱藏 */
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: auto !important;
+    margin-top: 0.125rem !important;
+    min-width: 200px !important;
+    max-width: 300px !important;
+    z-index: 1050 !important;
+    
+    /* 移除可能干擾的樣式 */
+    width: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* 當下拉選單展開時顯示 */
+  .navbar .dropdown-menu.show {
+    display: block !important;
+  }
+  
+  /* 桌面版下拉選單項目 - 移除 hover 動畫 */
+  .navbar .dropdown-item {
+    color: var(--white) !important;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 只保留顏色變化的過渡效果 */
+    padding: 0.75rem 1rem !important;
+    border: none !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+  
+  .navbar .dropdown-item:hover,
+  .navbar .dropdown-item:focus {
+    background-color: var(--gray) !important;
+    color: var(--white) !important;
+    transform: none !important; /* 移除滑入動畫，不要位移 */
+  }
+  
+  .navbar .dropdown-item:active {
+    background-color: var(--red) !important;
+    color: var(--white) !important;
+    transform: none !important; /* 確保 active 狀態也不位移 */
+  }
+}
+
+/* === 手機版樣式調整 - 強制修正 === */
+@media (max-width: 991.98px) {
+  
+  /* 導航項目基本樣式 */
+  .navbar-nav .nav-item {
+    position: relative;
+    width: 100%;
+  }
+
+  /* 按鈕組容器 */
+  .navbar .btn-group {
+    display: block !important;
+    width: 100% !important;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 主選單連結 */
+  .navbar .btn-group .nav-link:first-child {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 3rem 0.75rem 1rem; /* 右側留空給下拉按鈕 */
+    text-align: left;
+    border: none;
+  }
+
+  /* 下拉按鈕 */
+  .navbar .btn-group .dropdown-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 48px;
+    height: 100%;
+    padding: 0.75rem 0;
+    text-align: center;
+    border: none;
+    background: transparent;
+  }
+
+  /* 下拉選單容器 */
+  .navbar .dropdown-menu {
+    display: none !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: none !important;
+  }
+
+  /* 展開時顯示 */
+  .navbar .dropdown-menu.show {
+    display: block !important;
+  }
+
+  /* 下拉選單項目 */
+  .navbar .dropdown-menu .dropdown-item {
+    padding: 0.75rem 1.5rem 0.75rem 2rem !important;
+    color: var(--white) !important;
+  }
+
+  /* 下拉選單項目懸停效果 */
+  .navbar .dropdown-menu .dropdown-item:hover,
+  .navbar .dropdown-menu .dropdown-item:focus {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--red) !important;
+  }
+
+  /* 下拉選單項目激活狀態 */
+  .navbar .dropdown-menu .dropdown-item:active,
+  .navbar .dropdown-menu .dropdown-item.active {
+    background-color: var(--red) !important;
+    color: var(--white) !important;
+  }
+
+  /* 強制清除任何可能的浮動 */
+  .navbar-nav,
+  .navbar-nav .nav-item,
+  .navbar .btn-group,
+  .navbar .dropdown-menu {
+    float: none !important;
+    clear: both !important;
+  }
+
+  /* 手機版 hover 效果 */
+  .navbar .btn-group:hover .nav-link,
+  .navbar .btn-group:hover .dropdown-toggle {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--red) !important;
+    transform: none;
+    margin: 0;
+  }
+  
+  /* 手機版 active 狀態 */
+  .navbar .btn-group .nav-link.active,
+  .navbar .btn-group .dropdown-toggle[aria-expanded="true"] {
+    background-color: var(--red-20);
+    color: var(--red) !important;
+    transform: none;
+    margin: 0;
+  }
+}
+
+/* Footer Styling */
+footer {
+  background-color: var(--black);
+  border-top: 1px solid var(--gray);
+  color: var(--white);
+  padding: 2rem 0;
+}
+
+.footer-heading {
+  color: var(--red);
+  font-weight: bold;
+}
+
+.footer-link {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--red);
+  text-decoration: none;
+}
+
+.social-icon {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.social-icon:hover {
+  color: var(--red);
+}
+
+/* Button Styling */
+.btn-primary {
+  background-color: var(--red);
+  border-color: var(--red);
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-red);
+  border-color: var(--dark-red);
+}
+
+.btn-outline-primary {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+/* 新增的按鈕樣式 */
+.btn-dark-red {
+  background-color: var(--dark-red);
+  border-color: var(--dark-red);
+  color: var(--white);
+}
+
+.btn-dark-red:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.btn-outline-dark-red {
+  border-color: var(--dark-red);
+  color: var(--dark-red);
+}
+
+.btn-outline-dark-red:hover {
+  background-color: var(--dark-red);
+  color: var(--white);
+}
+
+.btn-gray {
+  background-color: var(--gray);
+  border-color: var(--gray);
+  color: var(--white);
+}
+
+.btn-gray:hover {
+  background-color: var(--black);
+  border-color: var(--gray);
+  color: var(--white);
+}
+
+.btn-outline-gray {
+  border-color: var(--gray);
+  color: var(--gray);
+}
+
+.btn-outline-gray:hover {
+  background-color: var(--gray);
+  color: var(--white);
+}
+
+/* Section Styling */
+.section-title {
+  color: var(--red);
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.section-subtitle {
+  color: var(--dark-red);
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+/* 新增的標題樣式 */
+.title-red {
+  color: var(--red);
+  font-weight: bold;
+}
+
+.title-dark-red {
+  color: var(--dark-red);
+  font-weight: bold;
+}
+
+.title-gray {
+  color: var(--gray);
+  font-weight: bold;
+}
+
+/* 新增的文字樣式 */
+.text-content {
+  color: var(--white);
+  line-height: 1.6;
+}
+
+.text-highlight {
+  color: var(--red);
+  font-weight: 500;
+}
+
+.text-secondary-highlight {
+  color: var(--dark-red);
+  font-weight: 500;
+}
+
+.text-muted-custom {
+  color: var(--gray);
+}
+
+/* Card Styling */
+.card {
+  background-color: var(--gray);
+  border: none;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-title {
+  color: var(--red);
+}
+
+.card-text {
+  color: var(--white);
+}
+
+/* 新增卡片樣式變體 */
+.card-dark {
+  background-color: var(--black);
+  border: 1px solid var(--gray);
+}
+
+.card-red {
+  background-color: var(--red-10);
+  border: 1px solid var(--red);
+}
+
+.card-dark-red {
+  background-color: var(--dark-red-10);
+  border: 1px solid var(--dark-red);
+}
+
+/* 邊框樣式 */
+.border-top-red {
+  border-top: 3px solid var(--red) !important;
+}
+
+.border-top-dark-red {
+  border-top: 3px solid var(--dark-red) !important;
+}
+
+.border-top-gray {
+  border-top: 3px solid var(--gray) !important;
+}
+
+/* 陰影效果 */
+.shadow-red {
+  box-shadow: 0 4px 8px var(--red-20) !important;
+}
+
+.shadow-dark-red {
+  box-shadow: 0 4px 8px var(--dark-red-20) !important;
+}
+
+.shadow-gray {
+  box-shadow: 0 4px 8px var(--gray-20) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-padding {
+    padding: 2rem 0;
+  }
+}
