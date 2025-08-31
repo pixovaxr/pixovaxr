@@ -564,21 +564,21 @@ footer {
 
 @media (max-width: 768px) {
   .vh-responsive {
-    height: 90vh !important;
-    max-height: 90vh !important;
+    height: 60vh !important;
+    max-height: 60vh !important;
   }
 }
 
 @media (max-width: 576px) {
   .vh-responsive {
-    height: 90vh !important;
-    max-height: 90vh !important;
+    height: 60vh !important;
+    max-height: 60vh !important;
   }
 }
 
 @media (max-width: 360px) {
   .vh-responsive {
-    height: 90vh !important;
-    max-height: 90vh !important;
+    height: 60vh !important;
+    max-height: 60vh !important;
   }
 }
