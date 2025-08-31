@@ -537,9 +537,6 @@ footer {
     font-size: 1.4rem !important;
     line-height: 1.2;
   }
-  .lead {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 576px) {
@@ -550,8 +547,5 @@ footer {
     margin-top: 24px;
     font-size: 1.4rem !important;
     line-height: 1.2;
-  }
-  .lead {
-    font-size: 1rem;
   }
 }
