@@ -564,14 +564,14 @@ footer {
 
 @media (max-width: 768px) {
   .vh-responsive {
-    height: 60vh !important;
-    max-height: 60vh !important;
+    height: 75vh !important;
+    max-height: 75vh !important;
   }
 }
 
 @media (max-width: 576px) {
   .vh-responsive {
-    height: 45vh !important;
-    max-height: 45vh !important;
+    height: 60vh !important;
+    max-height: 60vh !important;
   }
 }
