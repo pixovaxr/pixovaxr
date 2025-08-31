@@ -549,3 +549,29 @@ footer {
     line-height: 1.2;
   }
 }
+
+/* 響應式高度設定 */
+.vh-80 { 
+  height: 80vh !important;  /* 注意：用 height 而不是 max-height */
+  max-height: 80vh !important;
+  object-fit: cover;
+  object-position: center;
+}
+
+.vh-responsive {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .vh-responsive {
+    height: 60vh !important;
+    max-height: 60vh !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .vh-responsive {
+    height: 45vh !important;
+    max-height: 45vh !important;
+  }
+}
