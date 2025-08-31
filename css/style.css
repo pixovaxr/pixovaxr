@@ -526,10 +526,19 @@ footer {
   box-shadow: 0 4px 8px var(--gray-20) !important;
 }
 
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .section-padding {
     padding: 3rem 0;
+  }
+  .display-3 {
+    margin-top: 24px;
+    font-size: 1.4rem !important;
+    line-height: 1.2;
+  }
+  .lead {
+    font-size: 1rem;
   }
 }
 
@@ -542,11 +551,7 @@ footer {
     font-size: 1.4rem !important;
     line-height: 1.2;
   }
-  
   .lead {
     font-size: 1rem;
-  }
-  .hero-section img {
-    max-height: 100vh !important;
   }
 }
